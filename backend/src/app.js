@@ -2,6 +2,7 @@
 
 const fs = require("node:fs");
 const path = require("node:path");
+const cookieParser = require("cookie-parser");
 
 // create express app
 
@@ -12,21 +13,31 @@ const app = express();
 // use some application-level middlewares
 
 app.use(express.json());
+app.use(cookieParser());
 
 const cors = require("cors");
 
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL ?? "http://localhost:3000",
+    origin: process.env.FRONTEND_URL ?? "http://localhost:5173",
     optionsSuccessStatus: 200,
+    credentials: true,
   })
 );
 
 // import and mount the API routes
 
 const router = require("./router");
+const routerUsers = require("./Routers/routerUser");
+const routerProject = require("./Routers/routerProject");
+const routerLanguage = require("./Routers/routerLanguage");
+const routerCard = require("./Routers/routerCard");
 
 app.use(router);
+app.use(routerUsers);
+app.use(routerProject);
+app.use(routerLanguage);
+app.use(routerCard);
 
 // serve the `backend/public` folder for public resources
 
