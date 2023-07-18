@@ -6,14 +6,11 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
-import LibraryBooksRoundedIcon from "@mui/icons-material/LibraryBooksRounded";
-import RssFeedRoundedIcon from "@mui/icons-material/RssFeedRounded";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../Contexts/UserContext";
 
@@ -76,15 +73,28 @@ export default function Navbar() {
   };
 
   return (
-    <AppBar position="sticky" sx={{ backgroundColor: "#001233" }}>
+    <AppBar
+      position="sticky"
+      sx={{ backgroundColor: "#101820", color: "#F2AA4C" }}
+    >
       <Container maxWidth="xxl">
         <Toolbar disableGutters>
           <MenuItem onClick={handleLinkHome}>
-            <Typography sx={{ display: { xs: "none", lg: "flex" } }}>
+            <Typography
+              gutterBottom
+              component="h1"
+              variant="h5"
+              sx={{ display: { xs: "none", lg: "flex" } }}
+            >
               Anthony Discours
             </Typography>
           </MenuItem>
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "flex", md: "none", color: "#F2AA4C" },
+            }}
+          >
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -112,22 +122,38 @@ export default function Navbar() {
               onClose={handleCloseNavMenu}
             >
               <MenuItem onClick={handleLinkHome}>
-                <Typography textAlign="center" variant="h6" sx={{ p: 2 }}>
+                <Typography
+                  textAlign="center"
+                  variant="h6"
+                  sx={{ p: 2, color: "#F2AA4C" }}
+                >
                   Home
                 </Typography>
               </MenuItem>
               <MenuItem onClick={handleLinkAbout}>
-                <Typography textAlign="center" variant="h6" sx={{ p: 2 }}>
+                <Typography
+                  textAlign="center"
+                  variant="h6"
+                  sx={{ p: 2, color: "#F2AA4C" }}
+                >
                   About me
                 </Typography>
               </MenuItem>
               <MenuItem onClick={handleLinkProjects}>
-                <Typography textAlign="center" variant="h6" sx={{ p: 2 }}>
+                <Typography
+                  textAlign="center"
+                  variant="h6"
+                  sx={{ p: 2, color: "#F2AA4C" }}
+                >
                   Projects
                 </Typography>
               </MenuItem>
               <MenuItem onClick={handleLinkContact}>
-                <Typography textAlign="center" variant="h6" sx={{ p: 2 }}>
+                <Typography
+                  textAlign="center"
+                  variant="h6"
+                  sx={{ p: 2, color: "#F2AA4C" }}
+                >
                   Contact
                 </Typography>
               </MenuItem>
@@ -156,8 +182,7 @@ export default function Navbar() {
                   pl: 5,
                 }}
               >
-                <HomeRoundedIcon />
-                <Typography sx={{ ml: 1 }}>Home</Typography>
+                <Typography sx={{ ml: 1, color: "#F2AA4C" }}>Home</Typography>
               </Box>
             </Button>
             <Button
@@ -171,8 +196,9 @@ export default function Navbar() {
                   pl: 5,
                 }}
               >
-                <LibraryBooksRoundedIcon />
-                <Typography sx={{ ml: 1 }}>About me</Typography>
+                <Typography sx={{ ml: 1, color: "#F2AA4C" }}>
+                  About me
+                </Typography>
               </Box>
             </Button>
             <Button
@@ -186,8 +212,9 @@ export default function Navbar() {
                   pl: 5,
                 }}
               >
-                <RssFeedRoundedIcon />
-                <Typography sx={{ ml: 1 }}>Projects</Typography>
+                <Typography sx={{ ml: 1, color: "#F2AA4C" }}>
+                  Projects
+                </Typography>
               </Box>
             </Button>
             <Button
@@ -201,7 +228,9 @@ export default function Navbar() {
                   pl: 5,
                 }}
               >
-                <Typography sx={{ ml: 1 }}>Contact</Typography>
+                <Typography sx={{ ml: 1, color: "#F2AA4C" }}>
+                  Contact
+                </Typography>
               </Box>
             </Button>
           </Box>

@@ -1,13 +1,16 @@
 import CardContent from "@mui/material/CardContent";
-import Grid from "@mui/material/Unstable_Grid2";
 import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
-import CardMedia from "@mui/material/CardMedia";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
+import ListItemAvatar from "@mui/material/ListItemAvatar";
+import Avatar from "@mui/material/Avatar";
 import Container from "@mui/material/Container";
 import Card from "@mui/material/Card";
 import Css from "../../assets/css.svg";
 import Git from "../../assets/git.svg";
-import Github from "../../assets/github.svg";
+import GitHub from "../../assets/github.svg";
 import React from "../../assets/react.svg";
 import Javascript from "../../assets/javascript.svg";
 import Html from "../../assets/html.svg";
@@ -17,22 +20,42 @@ import Express from "../../assets/express.svg";
 import Figma from "../../assets/figma.svg";
 import Trello from "../../assets/trello.svg";
 import Agile from "../../assets/agile.png";
-import styles from "./AboutMe.module.css";
+
+const front = [
+  { name: "HTML", image: Html },
+  { name: "CSS", image: Css },
+  { name: "Javascript", image: Javascript },
+  { name: "ReactJS", image: React },
+];
+
+const back = [
+  { name: "NodeJS", image: NodeJS },
+  { name: "ExpressJS", image: Express },
+  { name: "MySQL", image: MySQL },
+];
+
+const tools = [
+  { name: "Git", image: Git },
+  { name: "GitHub", image: GitHub },
+  { name: "Figma", image: Figma },
+  { name: "Trello", image: Trello },
+  { name: "Agile", image: Agile },
+];
 
 export default function AboutMe() {
   return (
     <Container sx={{ mt: "2rem" }}>
-      <Card sx={{ backgroundColor: "#001233", borderRadius: "1rem" }}>
+      <Card sx={{ backgroundColor: "#101820", borderRadius: "1rem" }}>
         <CardContent>
           <Typography
             gutterBottom
             variant="h5"
             component="div"
-            sx={{ color: "#D9E0EF" }}
+            sx={{ color: "#F2AA4C" }}
           >
             About Me
           </Typography>
-          <Typography variant="body2" sx={{ color: "#cac0b3" }}>
+          <Typography variant="body2" sx={{ color: "#F2AA4C" }}>
             My name is Anthony, web developper from Wild Code School. After many
             years working in retails and sales, today, I developp website. I
             started my to practice at the end of 2022 by myself before joining
@@ -43,153 +66,72 @@ export default function AboutMe() {
         </CardContent>
       </Card>
 
-      <Card
-        sx={{
-          backgroundColor: "#001233",
-          mt: "3rem",
-          borderRadius: "1rem",
-          height: "30rem",
-        }}
-      >
-        <div className={styles.containerSkillsText}>
-          <Typography
-            gutterBottom
-            variant="h5"
-            component="div"
-            sx={{ color: "#D9E0EF" }}
-          >
-            {" "}
-            Developper tools
-          </Typography>
-          <Box sx={{ flexGrow: 1 }}>
-            <Typography sx={{ color: "#D9E0EF" }}>Front-End Tools</Typography>
-            <CardContent sx={{ backgroundColor: "#B3DDF9" }}>
-              <Grid
-                container
-                rowSpacing={1}
-                columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-              >
-                <Grid item xs={6}>
-                  <CardMedia
-                    component="img"
-                    height="140"
-                    src={Html}
-                    sx={{ maxWidth: "49px", maxHeight: "49px" }}
-                  />
-                </Grid>
-                <Grid item xs={6}>
-                  <CardMedia
-                    component="img"
-                    height="140"
-                    src={Css}
-                    sx={{ maxWidth: "49px", maxHeight: "49px" }}
-                  />
-                </Grid>
-                <Grid item xs={6}>
-                  <CardMedia
-                    component="img"
-                    height="140"
-                    src={Javascript}
-                    sx={{ maxWidth: "49px", maxHeight: "49px" }}
-                  />
-                </Grid>
-                <Grid item xs={6}>
-                  <CardMedia
-                    component="img"
-                    height="140"
-                    src={React}
-                    sx={{ maxWidth: "49px", maxHeight: "49px" }}
-                  />
-                </Grid>
-              </Grid>
-            </CardContent>
-            <Typography sx={{ color: "#D9E0EF" }}>Back-End Tools</Typography>
-            <CardContent
-              sx={{ backgroundColor: "#B3DDF9", borderRadius: "1rem" }}
+      <List dense sx={{ width: "100%", maxWidth: 360 }}>
+        {front.map((value) => {
+          return (
+            <ListItem
+              key={value.id}
+              disablePadding
+              sx={{ marginRight: "1rem" }}
             >
-              <Grid
-                container
-                rowSpacing={1}
-                columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-              >
-                <Grid item xs={6}>
-                  <CardMedia
-                    component="img"
-                    height="140"
-                    src={NodeJS}
-                    sx={{ maxWidth: "49px", maxHeight: "49px" }}
+              <ListItemButton>
+                <ListItemAvatar sx={{ marginRight: "2rem" }}>
+                  <Avatar
+                    alt={value.name}
+                    src={value.image}
+                    sx={{ height: "100%", width: "100%" }}
                   />
-                </Grid>
-                <Grid item xs={6}>
-                  <CardMedia
-                    component="img"
-                    height="140"
-                    src={MySQL}
-                    sx={{ maxWidth: "49px", maxHeight: "49px" }}
+                </ListItemAvatar>
+                <ListItemText primary={value.name} />
+              </ListItemButton>
+            </ListItem>
+          );
+        })}
+      </List>
+      <List dense sx={{ width: "100%", maxWidth: 360 }}>
+        {back.map((value) => {
+          return (
+            <ListItem
+              key={value.id}
+              disablePadding
+              sx={{ marginRight: "1rem" }}
+            >
+              <ListItemButton>
+                <ListItemAvatar sx={{ marginRight: "2rem" }}>
+                  <Avatar
+                    alt={value.name}
+                    src={value.image}
+                    sx={{ height: "100%", width: "100%", mr: "1rem" }}
                   />
-                </Grid>
-                <Grid item xs={6}>
-                  <CardMedia
-                    component="img"
-                    height="140"
-                    src={Express}
-                    sx={{ maxWidth: "70px", maxHeight: "70px" }}
+                </ListItemAvatar>
+                <ListItemText primary={value.name} />
+              </ListItemButton>
+            </ListItem>
+          );
+        })}
+      </List>
+      <List dense sx={{ width: "100%", maxWidth: 360 }}>
+        {tools.map((value) => {
+          return (
+            <ListItem
+              key={value.id}
+              disablePadding
+              sx={{ marginRight: "1rem" }}
+            >
+              <ListItemButton>
+                <ListItemAvatar sx={{ marginRight: "2rem" }}>
+                  <Avatar
+                    alt={value.name}
+                    src={value.image}
+                    sx={{ height: "100%", width: "100%", mr: "1rem" }}
                   />
-                </Grid>
-              </Grid>
-            </CardContent>
-            <Typography sx={{ color: "#D9E0EF" }}>General Tools</Typography>
-            <CardContent sx={{ backgroundColor: "#B3DDF9" }}>
-              <Grid
-                container
-                rowSpacing={1}
-                columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-              >
-                <Grid item xs={6}>
-                  <CardMedia
-                    component="img"
-                    height="140"
-                    src={Git}
-                    sx={{ maxWidth: "49px", maxHeight: "49px" }}
-                  />
-                </Grid>
-                <Grid item xs={6}>
-                  <CardMedia
-                    component="img"
-                    height="140"
-                    src={Github}
-                    sx={{ maxWidth: "49px", maxHeight: "49px" }}
-                  />
-                </Grid>
-                <Grid item xs={6}>
-                  <CardMedia
-                    component="img"
-                    height="140"
-                    src={Figma}
-                    sx={{ maxWidth: "49px", maxHeight: "49px" }}
-                  />
-                </Grid>
-                <Grid item xs={6}>
-                  <CardMedia
-                    component="img"
-                    height="140"
-                    src={Agile}
-                    sx={{ maxWidth: "49px", maxHeight: "49px" }}
-                  />
-                </Grid>
-                <Grid item xs={6}>
-                  <CardMedia
-                    component="img"
-                    height="140"
-                    src={Trello}
-                    sx={{ maxWidth: "49px", maxHeight: "49px" }}
-                  />
-                </Grid>
-              </Grid>
-            </CardContent>
-          </Box>
-        </div>
-      </Card>
+                </ListItemAvatar>
+                <ListItemText primary={value.name} />
+              </ListItemButton>
+            </ListItem>
+          );
+        })}
+      </List>
     </Container>
   );
 }

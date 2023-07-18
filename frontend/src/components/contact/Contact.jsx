@@ -70,15 +70,15 @@ const StyledContactForm = styled.div`
     label {
       margin-bottom: 0.5rem;
       margin-top: 1rem;
-      color: #ff595a;
+      color: #101820;
       font-size: 1.5rem;
     }
 
     input[type="submit"] {
       margin-top: 2rem;
       cursor: pointer;
-      background: #ff595a;
-      color: #001233;
+      background: #101820;
+      color: #f2aa4c;
       font-size: 1rem;
       font-weight: bold;
       border: none;
