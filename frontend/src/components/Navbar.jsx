@@ -6,15 +6,31 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
+import LibraryBooksRoundedIcon from "@mui/icons-material/LibraryBooksRounded";
+import RssFeedRoundedIcon from "@mui/icons-material/RssFeedRounded";
 import Container from "@mui/material/Container";
+import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
+import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
+import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
 import { useNavigate } from "react-router-dom";
+import { useUserContext } from "../Contexts/UserContext";
 
 export default function Navbar() {
+  const { user, logoutUser } = useUserContext();
   const navigate = useNavigate();
 
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [anchorElNavMenu, setAnchorElNavMenu] = React.useState(null);
+
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNavMenu(event.currentTarget);
@@ -26,15 +42,37 @@ export default function Navbar() {
 
   const handleLinkHome = () => {
     navigate("/");
+    setAnchorElNavMenu(null);
   };
   const handleLinkAbout = () => {
     navigate("/aboutme");
+    setAnchorElNavMenu(null);
   };
   const handleLinkProjects = () => {
     navigate("/projects");
+    setAnchorElNavMenu(null);
   };
   const handleLinkContact = () => {
     navigate("/contact");
+    setAnchorElNavMenu(null);
+  };
+  const handleLinkLogin = () => {
+    setAnchorElUser(null);
+    navigate("/login");
+  };
+  const handleLinkRegister = () => {
+    setAnchorElUser(null);
+    navigate("/register");
+  };
+  const handleLogoutUser = () => {
+    logoutUser();
+    setAnchorElUser(null);
+  };
+
+  const handleLinkAdmin = () => {
+    navigate("/admin");
+    setAnchorElUser(null);
+    setAnchorElNavMenu(null);
   };
 
   return (
@@ -80,7 +118,7 @@ export default function Navbar() {
               </MenuItem>
               <MenuItem onClick={handleLinkAbout}>
                 <Typography textAlign="center" variant="h6" sx={{ p: 2 }}>
-                  About
+                  About me
                 </Typography>
               </MenuItem>
               <MenuItem onClick={handleLinkProjects}>
@@ -118,12 +156,10 @@ export default function Navbar() {
                   pl: 5,
                 }}
               >
-                <Typography sx={{ ml: 1, color: "#cac0b3" }}>
-                  Accueil
-                </Typography>
+                <HomeRoundedIcon />
+                <Typography sx={{ ml: 1 }}>Home</Typography>
               </Box>
             </Button>
-
             <Button
               onClick={handleLinkAbout}
               sx={{ my: 2, color: "white", display: "block" }}
@@ -135,9 +171,8 @@ export default function Navbar() {
                   pl: 5,
                 }}
               >
-                <Typography sx={{ ml: 1, color: "#cac0b3" }}>
-                  Annonces
-                </Typography>
+                <LibraryBooksRoundedIcon />
+                <Typography sx={{ ml: 1 }}>About me</Typography>
               </Box>
             </Button>
             <Button
@@ -151,9 +186,8 @@ export default function Navbar() {
                   pl: 5,
                 }}
               >
-                <Typography sx={{ ml: 1, color: "#cac0b3" }}>
-                  Projects
-                </Typography>
+                <RssFeedRoundedIcon />
+                <Typography sx={{ ml: 1 }}>Projects</Typography>
               </Box>
             </Button>
             <Button
@@ -163,19 +197,65 @@ export default function Navbar() {
               <Box
                 sx={{
                   flexGrow: 1,
-                  display: {
-                    xs: "none",
-                    md: "flex",
-                    alignItems: "center",
-                  },
+                  display: { xs: "none", md: "flex", alignItems: "center" },
                   pl: 5,
                 }}
               >
-                <Typography sx={{ ml: 1, color: "#cac0b3" }}>
-                  Contact
-                </Typography>
+                <Typography sx={{ ml: 1 }}>Contact</Typography>
               </Box>
             </Button>
+          </Box>
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Espace Utilisateur">
+              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                <Avatar alt="Avatar" sx={{ maxWidth: "100%" }} />
+              </IconButton>
+            </Tooltip>
+            <Menu
+              sx={{ mt: "45px" }}
+              id="menu-appbar"
+              anchorEl={anchorElUser}
+              anchorOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "right",
+              }}
+              open={Boolean(anchorElUser)}
+              onClose={handleCloseUserMenu}
+            >
+              {user.admin === 1 ? (
+                <MenuItem onClick={handleLinkAdmin}>
+                  <Typography textAlign="center" variant="h6" sx={{ p: 2 }}>
+                    Espace Admin
+                  </Typography>
+                </MenuItem>
+              ) : null}
+              {user.id ? (
+                <MenuItem onClick={handleLogoutUser}>
+                  <Typography textAlign="center" variant="h6" sx={{ p: 2 }}>
+                    Logout
+                  </Typography>
+                </MenuItem>
+              ) : null}
+              {!user.id ? (
+                <MenuItem onClick={handleLinkLogin}>
+                  <Typography textAlign="center" variant="h6" sx={{ p: 2 }}>
+                    Login
+                  </Typography>
+                </MenuItem>
+              ) : null}
+              {!user.id ? (
+                <MenuItem onClick={handleLinkRegister}>
+                  <Typography textAlign="center" variant="h6" sx={{ p: 2 }}>
+                    Register
+                  </Typography>
+                </MenuItem>
+              ) : null}
+            </Menu>
           </Box>
         </Toolbar>
       </Container>

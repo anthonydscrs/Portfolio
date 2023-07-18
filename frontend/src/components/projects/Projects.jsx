@@ -12,8 +12,8 @@ import { styled } from "@mui/material/styles";
 import { Navigation, Pagination, Scrollbar } from "swiper";
 // eslint-disable-next-line import/no-unresolved
 import { Swiper, SwiperSlide } from "swiper/react";
-import P2 from "../assets/P2.jpg";
-import P1 from "../assets/P1.png";
+import P2 from "../../assets/P2.jpg";
+import P1 from "../../assets/P1.png";
 
 // eslint-disable-next-line import/no-unresolved
 import "swiper/css";
