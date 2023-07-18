@@ -1,0 +1,64 @@
+.projectsPage {
+  display: flex;
+}
+
+.container {
+  background-color: #ff595a;
+}
+
+#title {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+.icon {
+  font-size: 0.9rem;
+  display: inline-flex;
+  background: #d8d8d8;
+  border-radius: 3px;
+  margin-right: 5px;
+  margin-bottom: 15px;
+  gap: 10px;
+  span {
+    border-radius: 5px;
+    padding: 3px 5px;
+  }
+}
+
+.react {
+  background-color: blue;
+}
+
+.express {
+  background-color: #f2c986;
+}
+
+.node {
+  background-color: #e1c1c1;
+}
+
+.python {
+  background-color: #eadd86;
+}
+
+.default {
+  background-color: red;
+}
+
+.django {
+  background-color: #afeae5;
+}
+
+.card {
+  a {
+    padding-right: 15px;
+  }
+}
+
+.github {
+  color: #739150;
+}
+
+.status {
+  color: #7699c2;
+}

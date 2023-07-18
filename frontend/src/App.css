@@ -1,56 +1,91 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0px;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+body {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
 }
 
-.App {
+.app-container {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header-container {
+  height: 4.8rem;
+  padding: 1rem 2.5rem;
+  background-color: #cac0b3;
   display: flex;
-  flex-direction: column;
+  color: #d9e0ef;
   align-items: center;
+  justify-content: space-between;
+}
+
+.nav-container {
+  max-width: 770px;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  padding: 0.25rem 0.75rem;
+  list-style: none;
+  display: flex;
+}
+
+ul li {
+  /* separate the list items more prominently */
+  margin: 0 0.75rem;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+}
+
+ul li a {
+  /* reset the anchor link styles */
+  color: #d9e0ef;
+  text-decoration: none;
+  padding: 0 0.25rem;
+  letter-spacing: 0.2rem;
+  /* position relative to absolute position the connected pseudo element */
+  position: relative;
+}
+
+@media screen and (max-width: 779px) {
+  .header-title {
+    display: none;
+  }
+  .header-container {
+    padding: 0;
+  }
+  ul li a {
+    font-size: 1rem;
+  }
+}
+
+swiper {
+  width: 50%;
+  height: 75%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-button {
-  font-size: calc(10px + 2vmin);
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
