@@ -1,53 +1,91 @@
-## Concept
 
-This template is meant to serve as a foundation for every P2/P3 following the React-Express-MySQL stack, as learned in Wild Code School.
-It's pre-configured with a set of tools which'll help students produce industry-quality and easier-to-maintain code, while staying as simple as possible to use.
+# Welcome to my portfolio
 
-## Setup & Use
 
-### Windows users
+## Introduction
 
-Be sure to run these commands in a git terminal to avoid [issues with newline formats](https://en.wikipedia.org/wiki/Newline#Issues_with_different_newline_formats):
 
-```
-git config --global core.eol lf
-git config --global core.autocrlf false
-```
+Hello, i'm happy to present you my portfolio. This is part of my final evaluation during my training at the Wild Code School. I had to develop a website with a frontend and backend (authentification, MVC, database) during 2 days.
 
-### Project Initialization
+As this is an important project for me, I'll be keeping the portfolio regularly updated and improving it.
 
-- In VSCode, install plugins **Prettier - Code formatter** and **ESLint** and configure them
+## 🎯 The Objectives
+
+My goal was to create a portfolio to help me in my search for a work-study placement, while at the same time working on a project that would enable me to improve on certain aspects of the backend in particular.
+
+The aim was to have something viable to present to potential recruiters, despite the two days of coding!
+
+
+## Front-End
+Make a wireframe
+Write user stories
+Responsive Website
+Dynamic Website
+User (register, login, logout)
+
+
+## Back-End
+Create data & database
+Components to data'access
+MVC Schema
+Authentification (register, login, logout)
+
+# 🛠  Technical Stack
+
+- HTML/CSS
+- ReactJS
+- NodeJS
+- ExpressJS
+- MySQL
+- Material UI
+
+# Installation
+
+## Follow these steps
+
+- In VSCode, install plugins **Prettier - Code formatter** and **ESLint** and configure them.
 - Clone this repo, enter it
-- If you are using `yarn` or `pnpm`, adapt the `config/cli` in `package.json`
-- Run command `npm install`
-- _NB: To launch the backend server, you'll need an environment file with database credentials. You'll find a template one in `backend/.env.sample`_
+Run command `npm run setup`
+Run command `npm run migrate`
+_NB: To launch the backend server, you'll need an environment file with database credentials. You'll find a template one in `backend/.env.sample`_
+Create `.env` files in /frontend and /backend following `.env.sample` examples.
 
-### Available Commands
+✉️ To try Admin Role, you can log with : ad.discours@gmail.com || discours! ✉️
 
-- `migrate` : Run the database migration script
-- `dev` : Starts both servers (frontend + backend) in one terminal
-- `dev-front` : Starts the React frontend server
-- `dev-back` : Starts the Express backend server
-- `lint` : Runs validation tools, and refuses unclean code (will be executed on every _commit_)
-- `fix` : Fixes linter errors (run it if `lint` growls on your code !)
 
-## FAQ
+ ## Another commands :
 
-### Tools
+    - `setup` : Initialization of frontend and backend, as well as all toolings
+    - `migrate` : Run the database migration script
+    - `dev` : Starts both servers (frontend + backend) in one terminal
+    - `dev-front` : Starts the React frontend server
+    - `dev-back` : Starts the Express backend server
+    - `lint` : Runs validation tools, and refuses unclean code (will be executed on every _commit_)
+    - `fix` : Fixes linter errors (run it if `lint` growls on your code !)
 
-- _Concurrently_ : Allows for several commands to run concurrently in the same CLI
-- _Husky_ : Allows to execute specific commands that trigger on _git_ events
-- _Vite_ : Alternative to _Create-React-App_, packaging less tools for a more fluid experience
-- _ESLint_ : "Quality of code" tool, ensures chosen rules will be enforced
-- _Prettier_ : "Quality of code" tool as well, focuses on the styleguide
-- _ Airbnb Standard_ : One of the most known "standards", even though it's not officially linked to ES/JS
-- _Nodemon_ : Allows to restart the server everytime a .js file is udated
+# Packages
 
-### Deployment
+We used the Wild Code School - FullStack - Template
 
-For deployment, you have to go to `secrets` → app `actions` on the github repo to insert via `New repository secret` :
+## It contains :
+    - _Concurrently_ : Allows for several commands to run concurrently in the same CLI
+    - _Husky_ : Allows to execute specific commands that trigger on _git_ events
+    - _Vite_ : Alternative to _Create-React-App_, packaging less tools for a more fluid experience
+    - _ESLint_ : "Quality of code" tool, ensures chosen rules will be enforced
+    - _Prettier_ : "Quality of code" tool as well, focuses on the styleguide
+    - _ Airbnb Standard_ : One of the most known "standards", even though it's not officially linked to ES/JS
+    - _Nodemon_ : Allows to restart the server everytime a .js file is udated
 
-- CAPROVER_BACK_APPNAME : name app on caprover
-- CAPROVER_FRONT_APPNAME : name app on caprover
-- CAPROVER_PASSWORD : password caprover
-- CAPROVER_SERVER : link of domain
+
+
+## And I added :
+    - React Router Dom
+    - Material UI
+    - Swiper
+    - jsonwebtoken
+    - cookie-parser
+    - @emailjs/browser
+    - styled/components
+    - Argon2 - as a hashing password manager
+    - React-toastify
+
