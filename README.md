@@ -65,7 +65,7 @@ Create `.env` files in /frontend and /backend following `.env.sample` examples.
 
 # Packages
 
-We used the Wild Code School - FullStack - Template
+I used the Wild Code School - FullStack - Template
 
 ## It contains :
     - _Concurrently_ : Allows for several commands to run concurrently in the same CLI
