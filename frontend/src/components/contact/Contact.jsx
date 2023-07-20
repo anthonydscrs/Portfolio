@@ -1,12 +1,37 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
+import emailjs from "@emailjs/browser";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Contact() {
   const form = useRef();
 
+  const notifyCreation = () => toast.success("Formulaire envoyé");
+  const notifyCreationError = () => toast.error("Problème lors de l'envoi'");
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_iuuopcc",
+        "template_gvr1xqv",
+        form.current,
+        "0WORTAh93J0u9bCgs"
+      )
+      .then(() => {
+        notifyCreation();
+      })
+      .catch((error) => {
+        console.error(error);
+        notifyCreationError();
+      });
+  };
+
   return (
     <StyledContactForm>
-      <form ref={form}>
+      <form ref={form} onSubmit={sendEmail}>
         <label htmlFor="Name">Name</label>
         <input type="text" name="user_name" />
         <label htmlFor="Email">Email</label>
@@ -70,15 +95,15 @@ const StyledContactForm = styled.div`
     label {
       margin-bottom: 0.5rem;
       margin-top: 1rem;
-      color: #ff595a;
+      color: #101820;
       font-size: 1.5rem;
     }
 
     input[type="submit"] {
       margin-top: 2rem;
       cursor: pointer;
-      background: #ff595a;
-      color: #001233;
+      background: #101820;
+      color: #f2aa4c;
       font-size: 1rem;
       font-weight: bold;
       border: none;

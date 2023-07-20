@@ -5,18 +5,55 @@ class CardManager extends AbstractManager {
     super({ table: "card" });
   }
 
+  find(cardId) {
+    return this.database.query(
+      `
+      SELECT card.project_id, project.name, project.description, project.website, project.picture, project.date, card.Htmlcss, card.Javascript, card.React, card.Node, card.Express, card.MySQL
+      FROM card
+      INNER JOIN project ON card.project_id = project.id
+  
+      WHERE card.id = ?
+    `,
+      [cardId]
+    );
+  }
+
+  findAll() {
+    return this.database.query(
+      `SELECT card.project_id, project.name, project.description, project.website, project.picture, project.date, card.Htmlcss, card.Javascript, card.React, card.Node, card.Express, card.MySQL FROM ${this.table}
+      INNER JOIN project ON card.project_id = project.id
+      `
+    );
+  }
+
   insert(card) {
     return this.database.query(
       `INSERT INTO ${this.table} 
-    (project_id, language_id) VALUES (?, ?)`,
-      [card.project_id, card.language_id]
+    (project_id, card.Htmlcss, card.Javascript, card.React, card.Node, card.Express, card.MySQL) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+      [
+        card.project_id,
+        card.Htmlcss,
+        card.Javascript,
+        card.React,
+        card.Node,
+        card.Express,
+        card.MySQL,
+      ]
     );
   }
 
   update(card) {
     return this.database.query(
-      `update ${this.table} set  project_id = ?,language_id = ? where id = ${card.id}`,
-      [card.project_id, card.language_id]
+      `update ${this.table} set  project_id = ?, card.Htmlcss = ?, card.Javascript = ?, card.React = ?, card.Node = ?, card.Express = ?, card.MySQL = ? where id = ${card.id}`,
+      [
+        card.project_id,
+        card.Htmlcss,
+        card.Javascript,
+        card.React,
+        card.Node,
+        card.Express,
+        card.MySQL,
+      ]
     );
   }
 

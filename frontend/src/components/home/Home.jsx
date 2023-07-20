@@ -17,10 +17,6 @@ export default function Home() {
             <a
               href="https://www.linkedin.com/in/anthony-discours/"
               target="__blank"
-              style={{
-                filter:
-                  "invert(95%) sepia(5%) saturate(18%) hue-rotate(121deg) brightness(103%) contrast(106%)",
-              }}
             >
               <img src={Linkedin} alt="linkedin" />{" "}
             </a>
@@ -28,21 +24,11 @@ export default function Home() {
               <img
                 src={Github}
                 alt="GitHub"
-                style={{
-                  filter:
-                    "invert(95%) sepia(5%) saturate(18%) hue-rotate(121deg) brightness(103%) contrast(106%)",
-                }}
+                style={{ marginLeft: "1rem", marginRight: "1rem" }}
               />{" "}
             </a>
             <a href={CV} target="__blank" rel="noreferrer">
-              <img
-                src={Resume}
-                alt="Resume"
-                style={{
-                  filter:
-                    "invert(95%) sepia(5%) saturate(18%) hue-rotate(121deg) brightness(103%) contrast(106%)",
-                }}
-              />{" "}
+              <img src={Resume} alt="Resume" />{" "}
             </a>
           </div>
         </div>
