@@ -6,7 +6,9 @@
 }
 
 html {
-  background-color: #f2aa4c;
+  background: radial-gradient(
+    circle,
+    rgba(242, 170, 76, 1) 0%,
+    rgba(16, 24, 32, 1) 100%
+  );
 }
-
-/* color #323232 grey */

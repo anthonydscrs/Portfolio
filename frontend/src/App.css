@@ -10,61 +10,14 @@ body {
   padding: 0px;
 }
 
-.app-container {
+.About {
   text-align: center;
-}
-
-.header-container {
-  height: 4.8rem;
-  padding: 1rem 2.5rem;
-  background-color: #cac0b3;
-  display: flex;
-  color: #d9e0ef;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.nav-container {
-  max-width: 770px;
-}
-
-a {
-  text-decoration: none;
-}
-
-ul {
-  padding: 0.25rem 0.75rem;
-  list-style: none;
-  display: flex;
-}
-
-ul li {
-  /* separate the list items more prominently */
-  margin: 0 0.75rem;
-  font-size: 1.4rem;
-  text-transform: uppercase;
-}
-
-ul li a {
-  /* reset the anchor link styles */
-  color: #d9e0ef;
-  text-decoration: none;
-  padding: 0 0.25rem;
-  letter-spacing: 0.2rem;
-  /* position relative to absolute position the connected pseudo element */
-  position: relative;
-}
-
-@media screen and (max-width: 779px) {
-  .header-title {
-    display: none;
-  }
-  .header-container {
-    padding: 0;
-  }
-  ul li a {
-    font-size: 1rem;
-  }
+  margin-top: 15vh;
+  background: radial-gradient(
+    circle,
+    rgba(242, 170, 76, 1) 0%,
+    rgba(16, 24, 32, 1) 100%
+  );
 }
 
 swiper {

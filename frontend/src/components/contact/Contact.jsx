@@ -1,8 +1,10 @@
 import React, { useRef } from "react";
 import styled from "styled-components";
+import Typography from "@mui/material/Typography";
 import emailjs from "@emailjs/browser";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Navbar from "../Navbar";
 
 export default function Contact() {
   const form = useRef();
@@ -30,17 +32,31 @@ export default function Contact() {
   };
 
   return (
-    <StyledContactForm>
-      <form ref={form} onSubmit={sendEmail}>
-        <label htmlFor="Name">Name</label>
-        <input type="text" name="user_name" />
-        <label htmlFor="Email">Email</label>
-        <input type="email" name="user_email" />
-        <label htmlFor="Message">Message</label>
-        <textarea name="message" />
-        <input type="submit" value="Send" />
-      </form>
-    </StyledContactForm>
+    <div>
+      <Navbar />
+      <StyledContactForm>
+        <Typography
+          gutterBottom
+          variant="h5"
+          component="div"
+          sx={{ color: "#101820", fontSize: "3rem" }}
+        >
+          Want to get in touch with me ?
+        </Typography>
+        <Typography variant="body2" sx={{ color: "#101820", fontSize: "2rem" }}>
+          Send me a email below and I'll get back to you as soon as I can
+        </Typography>
+        <form ref={form} onSubmit={sendEmail}>
+          <label htmlFor="Name">Name</label>
+          <input type="text" name="user_name" />
+          <label htmlFor="Email">Email</label>
+          <input type="email" name="user_email" />
+          <label htmlFor="Message">Message</label>
+          <textarea name="message" />
+          <input type="submit" value="Send" />
+        </form>
+      </StyledContactForm>
+    </div>
   );
 }
 
@@ -53,7 +69,6 @@ const StyledContactForm = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   form {
     display: flex;
     flex-direction: column;
