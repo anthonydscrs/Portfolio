@@ -44,11 +44,6 @@ const ProjectManager = require("./ProjectManager");
 models.project = new ProjectManager();
 models.project.setDatabase(pool);
 
-const LanguageManager = require("./LanguageManager");
-
-models.language = new LanguageManager();
-models.language.setDatabase(pool);
-
 const CardManager = require("./CardManager");
 
 models.card = new CardManager();

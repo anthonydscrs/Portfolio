@@ -83,8 +83,14 @@ export default function Navbar() {
             <Typography
               gutterBottom
               component="h1"
-              variant="h5"
-              sx={{ display: { xs: "none", lg: "flex" } }}
+              variant="h4"
+              sx={{
+                display: {
+                  xs: "none",
+                  lg: "flex",
+                  fontFamily: "Pacifico, cursive",
+                },
+              }}
             >
               Anthony Discours
             </Typography>
@@ -125,7 +131,11 @@ export default function Navbar() {
                 <Typography
                   textAlign="center"
                   variant="h6"
-                  sx={{ p: 2, color: "#F2AA4C" }}
+                  sx={{
+                    p: 2,
+                    color: "#F2AA4C",
+                    fontFamily: "Pacifico, cursive",
+                  }}
                 >
                   Home
                 </Typography>
@@ -134,7 +144,11 @@ export default function Navbar() {
                 <Typography
                   textAlign="center"
                   variant="h6"
-                  sx={{ p: 2, color: "#F2AA4C" }}
+                  sx={{
+                    p: 2,
+                    color: "#F2AA4C",
+                    fontFamily: "Pacifico, cursive",
+                  }}
                 >
                   About me
                 </Typography>
@@ -143,7 +157,11 @@ export default function Navbar() {
                 <Typography
                   textAlign="center"
                   variant="h6"
-                  sx={{ p: 2, color: "#F2AA4C" }}
+                  sx={{
+                    p: 2,
+                    color: "#F2AA4C",
+                    fontFamily: "Pacifico, cursive",
+                  }}
                 >
                   Projects
                 </Typography>
@@ -152,7 +170,11 @@ export default function Navbar() {
                 <Typography
                   textAlign="center"
                   variant="h6"
-                  sx={{ p: 2, color: "#F2AA4C" }}
+                  sx={{
+                    p: 2,
+                    color: "#F2AA4C",
+                    fontFamily: "Pacifico, cursive",
+                  }}
                 >
                   Contact
                 </Typography>
@@ -182,7 +204,15 @@ export default function Navbar() {
                   pl: 5,
                 }}
               >
-                <Typography sx={{ ml: 1, color: "#F2AA4C" }}>Home</Typography>
+                <Typography
+                  sx={{
+                    ml: 1,
+                    color: "#F2AA4C",
+                    fontFamily: "Pacifico, cursive",
+                  }}
+                >
+                  Home
+                </Typography>
               </Box>
             </Button>
             <Button
@@ -196,7 +226,13 @@ export default function Navbar() {
                   pl: 5,
                 }}
               >
-                <Typography sx={{ ml: 1, color: "#F2AA4C" }}>
+                <Typography
+                  sx={{
+                    ml: 1,
+                    color: "#F2AA4C",
+                    fontFamily: "Pacifico, cursive",
+                  }}
+                >
                   About me
                 </Typography>
               </Box>
@@ -212,7 +248,13 @@ export default function Navbar() {
                   pl: 5,
                 }}
               >
-                <Typography sx={{ ml: 1, color: "#F2AA4C" }}>
+                <Typography
+                  sx={{
+                    ml: 1,
+                    color: "#F2AA4C",
+                    fontFamily: "Pacifico, cursive",
+                  }}
+                >
                   Projects
                 </Typography>
               </Box>
@@ -228,7 +270,13 @@ export default function Navbar() {
                   pl: 5,
                 }}
               >
-                <Typography sx={{ ml: 1, color: "#F2AA4C" }}>
+                <Typography
+                  sx={{
+                    ml: 1,
+                    color: "#F2AA4C",
+                    fontFamily: "Pacifico, cursive",
+                  }}
+                >
                   Contact
                 </Typography>
               </Box>

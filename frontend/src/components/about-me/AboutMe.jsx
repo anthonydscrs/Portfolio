@@ -2,7 +2,6 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
@@ -44,18 +43,33 @@ const tools = [
 
 export default function AboutMe() {
   return (
-    <Container sx={{ mt: "2rem" }}>
-      <Card sx={{ backgroundColor: "#101820", borderRadius: "1rem" }}>
+    <Container>
+      <Card
+        sx={{ backgroundColor: "#101820", borderRadius: "1rem", mt: "3rem" }}
+      >
         <CardContent>
           <Typography
             gutterBottom
             variant="h5"
             component="div"
-            sx={{ color: "#F2AA4C" }}
+            sx={{
+              color: "#F2AA4C",
+              mb: "1rem",
+              fontFamily: "Montserrat",
+              fontSize: "2rem",
+              fontWeight: "bold",
+            }}
           >
             About Me
           </Typography>
-          <Typography variant="body2" sx={{ color: "#F2AA4C" }}>
+          <Typography
+            variant="body2"
+            sx={{
+              color: "#F2AA4C",
+              fontFamily: "Montserrat",
+              fontSize: "1.5rem",
+            }}
+          >
             My name is Anthony, web developper from Wild Code School. After many
             years working in retails and sales, today, I developp website. I
             started my to practice at the end of 2022 by myself before joining
@@ -65,73 +79,162 @@ export default function AboutMe() {
           </Typography>
         </CardContent>
       </Card>
-
-      <List dense sx={{ width: "100%", maxWidth: 360 }}>
-        {front.map((value) => {
-          return (
-            <ListItem
-              key={value.id}
-              disablePadding
-              sx={{ marginRight: "1rem" }}
+      <Container
+        sx={{
+          display: "grid",
+          gridTemplateColumns: "1fr",
+          gridGap: "1rem",
+          mt: "3rem",
+          "@media (min-width: 768px)": {
+            gridTemplateColumns: "1fr 1fr 1fr",
+          },
+        }}
+      >
+        <Card sx={{ backgroundColor: "#101820", borderRadius: "1rem" }}>
+          <CardContent>
+            <Typography
+              gutterBottom
+              variant="h5"
+              component="div"
+              sx={{ color: "#F2AA4C", mb: "1rem" }}
             >
-              <ListItemButton>
-                <ListItemAvatar sx={{ marginRight: "2rem" }}>
-                  <Avatar
-                    alt={value.name}
-                    src={value.image}
-                    sx={{ height: "100%", width: "100%" }}
-                  />
-                </ListItemAvatar>
-                <ListItemText primary={value.name} />
-              </ListItemButton>
-            </ListItem>
-          );
-        })}
-      </List>
-      <List dense sx={{ width: "100%", maxWidth: 360 }}>
-        {back.map((value) => {
-          return (
-            <ListItem
-              key={value.id}
-              disablePadding
-              sx={{ marginRight: "1rem" }}
+              Front End
+            </Typography>
+            <List
+              dense
+              sx={{
+                width: "100%",
+                maxWidth: 360,
+                display: "grid",
+                gridTemplateColumns: "1fr",
+              }}
             >
-              <ListItemButton>
-                <ListItemAvatar sx={{ marginRight: "2rem" }}>
-                  <Avatar
-                    alt={value.name}
-                    src={value.image}
-                    sx={{ height: "100%", width: "100%", mr: "1rem" }}
-                  />
-                </ListItemAvatar>
-                <ListItemText primary={value.name} />
-              </ListItemButton>
-            </ListItem>
-          );
-        })}
-      </List>
-      <List dense sx={{ width: "100%", maxWidth: 360 }}>
-        {tools.map((value) => {
-          return (
-            <ListItem
-              key={value.id}
-              disablePadding
-              sx={{ marginRight: "1rem" }}
+              {front.map((value) => {
+                return (
+                  <ListItem
+                    key={value.id}
+                    disablePadding
+                    sx={{
+                      justifyContent: " center",
+                      textAlign: "center",
+                      alignItems: "center",
+                      mb: "1rem",
+                    }}
+                  >
+                    <ListItemAvatar>
+                      <Avatar
+                        alt={value.name}
+                        src={value.image}
+                        sx={{ height: "100%", width: "100%" }}
+                      />
+                    </ListItemAvatar>
+                    <ListItemText
+                      primary={value.name}
+                      sx={{ color: "#F2AA4C" }}
+                    />
+                  </ListItem>
+                );
+              })}
+            </List>
+          </CardContent>
+        </Card>
+        <Card sx={{ backgroundColor: "#101820", borderRadius: "1rem" }}>
+          <CardContent>
+            <Typography
+              gutterBottom
+              variant="h5"
+              component="div"
+              sx={{ color: "#F2AA4C", mb: "1rem" }}
             >
-              <ListItemButton>
-                <ListItemAvatar sx={{ marginRight: "2rem" }}>
-                  <Avatar
-                    alt={value.name}
-                    src={value.image}
-                    sx={{ height: "100%", width: "100%", mr: "1rem" }}
-                  />
-                </ListItemAvatar>
-                <ListItemText primary={value.name} />
-              </ListItemButton>
-            </ListItem>
-          );
-        })}
-      </List>
+              Back End
+            </Typography>
+            <List
+              dense
+              sx={{
+                width: "100%",
+                maxWidth: 360,
+                display: "grid",
+                gridTemplateColumns: "1fr",
+              }}
+            >
+              {back.map((value) => {
+                return (
+                  <ListItem
+                    key={value.id}
+                    disablePadding
+                    sx={{
+                      justifyContent: " center",
+                      textAlign: "center",
+                      alignItems: "center",
+                      mb: "1rem",
+                    }}
+                  >
+                    <ListItemAvatar>
+                      <Avatar
+                        alt={value.name}
+                        src={value.image}
+                        sx={{ height: "100%", width: "100%", mr: "1rem" }}
+                      />
+                    </ListItemAvatar>
+                    <ListItemText
+                      primary={value.name}
+                      sx={{ color: "#F2AA4C" }}
+                    />
+                  </ListItem>
+                );
+              })}
+            </List>
+          </CardContent>
+        </Card>
+        <Card sx={{ backgroundColor: "#101820", borderRadius: "1rem" }}>
+          <CardContent>
+            <Typography
+              gutterBottom
+              variant="h5"
+              component="div"
+              sx={{ color: "#F2AA4C", mb: "1rem" }}
+            >
+              Tools
+            </Typography>
+            <List
+              dense
+              sx={{
+                width: "100%",
+                maxWidth: 360,
+                display: "grid",
+                gridTemplateColumns: "1fr",
+              }}
+            >
+              {tools.map((value) => {
+                return (
+                  <ListItem
+                    key={value.id}
+                    disablePadding
+                    sx={{
+                      justifyContent: " center",
+                      textAlign: "center",
+                      alignItems: "center",
+                      mb: "1rem",
+                    }}
+                  >
+                    <ListItemAvatar>
+                      <Avatar
+                        alt={value.name}
+                        src={value.image}
+                        sx={{ height: "100%", width: "100%", mr: "1rem" }}
+                      />
+                    </ListItemAvatar>
+                    <ListItemText
+                      primary={value.name}
+                      sx={{ color: "#F2AA4C" }}
+                    />
+                  </ListItem>
+                );
+              })}
+            </List>
+          </CardContent>
+        </Card>
+      </Container>
     </Container>
   );
 }

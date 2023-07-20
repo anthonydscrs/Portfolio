@@ -21,14 +21,7 @@ CREATE TABLE project (
   description TEXT,
   website TEXT,
   picture BLOB,
-  date DATE,
-  PRIMARY KEY (id)
-)
-ENGINE = InnoDB DEFAULT CHARSET = utf8;
-
-CREATE TABLE `language` (
-  id INT NOT NULL AUTO_INCREMENT,
-  title VARCHAR(255) NOT NULL,
+  date VARCHAR(60),
   PRIMARY KEY (id)
 )
 ENGINE = InnoDB DEFAULT CHARSET = utf8;
@@ -36,12 +29,15 @@ ENGINE = InnoDB DEFAULT CHARSET = utf8;
 CREATE TABLE card (
   id INT NOT NULL AUTO_INCREMENT,
   project_id INT,
-  language_id INT,
-  FOREIGN KEY (project_id) REFERENCES project(id),
-  FOREIGN KEY (language_id) REFERENCES language(id),
-  PRIMARY KEY (id)
-)
-ENGINE = InnoDB DEFAULT CHARSET = utf8;
+  Htmlcss VARCHAR(50),
+  Javascript VARCHAR(50),
+  React VARCHAR(50),
+  Node VARCHAR(50),
+  Express VARCHAR(50),
+  MySQL VARCHAR(50),
+  PRIMARY KEY (id),
+  FOREIGN KEY (project_id) REFERENCES project(id)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
 INSERT INTO user (email, hashedPassword, admin)
 VALUES
@@ -49,30 +45,16 @@ VALUES
 
 INSERT INTO project (name, description, website, picture, date)
 VALUES
-('Project 1', 'Description of Project 1', 'http://example.com/project1', NULL, '2022-01-01'),
-('Project 2', 'Description of Project 2', 'http://example.com/project2', NULL, '2022-02-02'),
-('Project 3', 'Description of Project 3', 'http://example.com/project3', NULL, '2022-03-03');
+('Wildked''in', 'This is my first project as part of my training at the Wild Code School. I was working with 3 others comrads for two weeks. The project was about presenting the students of our class under the form of a portfolio. We used HTML, CSS, Javascript and git/GitHub.', 'https://wildcodeschool.github.io/2023-02-JS-FT-Lyon-P1-WeWildin/', "../public/P1.png", '2023-03'),
+('Keskonregarde?', 'This is my project n°2 as part of my training at the Wild Code School. The project was about helping you search a movie/series according to your desires. It was the first time we worked on the backend and we used our first API, TMDB API. I was working with 2 comrades for a period of 1 month during our 3rd month of training.', 'https://keskonregarde.netlify.app/', "../public/P2.jpg", '2023-04'),
+('Externatic', 'This is my third and last project as part of my training at the WCS. We worked for a company called Externatic. They asked us to develop a website aimed at candidates looking for jobs in IT. We had to create the backend from scratch for the first time (MVC, authentification, database...)', 'https://externatic.lyon-2.wilders.dev/', 'https://source.unsplash.com/random?wallpapers', '2023-06/2023-07'),
+('Smart Compagnon', 'Our first hackathon during our training. We were a group of 3 who worked during 48 hours for the company Emmaüs Connect. They asked us to build a website to help Les Compagnons to evaluate the price of a smartphone and be more efficient at work. We were quite free to develop other functionalities.', 'https://github.com/marceloxhenrique/Hackathon-2WildCodeSchool', NULL, '2023-06');
 
-INSERT INTO language (title)
+INSERT INTO card (project_id, Htmlcss, Javascript, React, Node, Express, MySQL)
 VALUES
-('HTML/CSS'),
-('Javascript'),
-('ReactJS'),
-('Node.JS'),
-('ExpressJS');
-
-INSERT INTO card (project_id, language_id)
-VALUES
-(1, 1),
-(1, 2),
-(2, 1),
-(2, 2),
-(2, 3),
-(2, 4),
-(3, 1),
-(3, 2),
-(3, 3),
-(3, 4),
-(3, 5);
+(1, 'HTML/CSS', 'Javascript', NULL, NULL, NULL, NULL),
+(2, 'HMTL/CSS', 'Javascript', 'ReactJS', 'NodeJS', NULL, NULL),
+(3, 'HTML/CSS', 'Javascript', 'ReactJS', 'NodeJS', 'ExpressJS', 'MySQL'),
+(4,'HTML/CSS', 'Javascript', 'ReactJS', 'NodeJS', 'ExpressJS', 'MySQL');
 
 SET foreign_key_checks = 1;

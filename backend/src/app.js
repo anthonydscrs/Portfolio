@@ -30,13 +30,11 @@ app.use(
 const router = require("./router");
 const routerUsers = require("./Routers/routerUser");
 const routerProject = require("./Routers/routerProject");
-const routerLanguage = require("./Routers/routerLanguage");
 const routerCard = require("./Routers/routerCard");
 
 app.use(router);
 app.use(routerUsers);
 app.use(routerProject);
-app.use(routerLanguage);
 app.use(routerCard);
 
 // serve the `backend/public` folder for public resources
