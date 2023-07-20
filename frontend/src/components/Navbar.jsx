@@ -98,7 +98,11 @@ export default function Navbar() {
           <Box
             sx={{
               flexGrow: 1,
-              display: { xs: "flex", md: "none", color: "#F2AA4C" },
+              display: {
+                xs: "flex",
+                md: "none",
+                color: "#F2AA4C",
+              },
             }}
           >
             <IconButton
@@ -189,32 +193,6 @@ export default function Navbar() {
               flexGrow: 3,
             }}
           >
-            <Button
-              onClick={handleLinkHome}
-              sx={{ my: 2, color: "white", display: "block" }}
-            >
-              <Box
-                sx={{
-                  flexGrow: 1,
-                  display: {
-                    xs: "none",
-                    md: "flex",
-                    alignItems: "center",
-                  },
-                  pl: 5,
-                }}
-              >
-                <Typography
-                  sx={{
-                    ml: 1,
-                    color: "#F2AA4C",
-                    fontFamily: "Pacifico, cursive",
-                  }}
-                >
-                  Home
-                </Typography>
-              </Box>
-            </Button>
             <Button
               onClick={handleLinkAbout}
               sx={{ my: 2, color: "white", display: "block" }}

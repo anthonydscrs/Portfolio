@@ -17,7 +17,7 @@ ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
 CREATE TABLE project (
   id INT NOT NULL AUTO_INCREMENT,
-  name VARCHAR(100) UNIQUE NOT NULL,
+  name VARCHAR(100) NOT NULL,
   description TEXT,
   website TEXT,
   picture BLOB,
