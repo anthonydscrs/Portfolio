@@ -78,10 +78,10 @@ export default function AboutMe() {
                 fontSize: "1.5rem",
               }}
             >
-              My name is Anthony, web developper from Wild Code School. After
+              My name is Anthony, Web Developper from Wild Code School. After
               many years working in retails and sales, today, I developp
               website. I started my to practice at the end of 2022 by myself
-              before joining my school during 5 months. Now I am looking to
+              before joining my school during 5 months. Now? I am looking to
               improve my skills and I want to continue with a 1 year work-study
               apprenticeship contract. I am open to all languages.
             </Typography>

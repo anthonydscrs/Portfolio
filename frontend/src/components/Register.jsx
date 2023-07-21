@@ -9,11 +9,11 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import { LockOutlinedIcon } from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
-import Paper from "@mui/material/Paper";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ValidateForm from "./ValidateForm";
+import Navbar from "./Navbar";
 
 function Copyright() {
   return (
@@ -93,80 +93,97 @@ export default function Register() {
   };
 
   return (
-    <Grid container component="main" sx={{ height: "100vh" }}>
-      <Grid item xs={false} sm={false} md={7} />
-      <Grid item xs={12} sm={12} md={5} component={Paper} elevation={6} square>
-        <Box
-          sx={{
-            my: 6,
-            mx: 5,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <Avatar
-            src={LockOutlinedIcon}
-            sx={{ m: 1, bgcolor: "secondary.main" }}
-          />
-          <Typography component="h1" variant="h5">
-            Créer mon Profil
-          </Typography>
+    <div>
+      <Navbar />
+      <Grid
+        container
+        component="main"
+        sx={{
+          height: "100vh",
+          background:
+            "radial-gradient(circle, rgba(242, 170, 76, 1) 0%, rgba(16, 24, 32, 1) 100%)",
+        }}
+      >
+        <Grid item xs={12} sm={12} md={12} elevation={6} square>
           <Box
-            component="form"
-            noValidate
-            onSubmit={handleSubmit}
-            sx={{ mt: 3, mb: 2 }}
+            sx={{
+              my: 6,
+              mx: 5,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
           >
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="email"
-                  label="Adresse e-mail"
-                  name="email"
-                  autoComplete="email"
-                  onChange={handleInputChange}
-                  value={formData.email}
-                />
-                <Box color="primary.main">{validateInput.email}</Box>
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="password"
-                  label="Mot De Passe"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
-                  onChange={handleInputChange}
-                  value={formData.password}
-                />
-                <Box color="primary.main">{validateInput.password}</Box>
-              </Grid>
-            </Grid>
-            <Button
-              type="submit"
-              fullWidth
-              color="success"
-              variant="contained"
+            <Avatar src={LockOutlinedIcon} sx={{ m: 1, bgcolor: "#101820" }} />
+            <Typography component="h1" variant="h5">
+              Create an account
+            </Typography>
+            <Box
+              component="form"
+              noValidate
+              onSubmit={handleSubmit}
               sx={{ mt: 3, mb: 2 }}
             >
-              Enregistrer
-            </Button>
-            <Grid container justifyContent="flex-end">
-              <Grid item>
-                <Button onClick={handleLinkLogin} variant="text">
-                  Vous avez déja un compte? Accéder au Login
-                </Button>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="email"
+                    label="Adresse e-mail"
+                    name="email"
+                    autoComplete="email"
+                    onChange={handleInputChange}
+                    value={formData.email}
+                  />
+                  <Box color="primary.main">{validateInput.email}</Box>
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    name="password"
+                    label="Mot De Passe"
+                    type="password"
+                    id="password"
+                    autoComplete="new-password"
+                    onChange={handleInputChange}
+                    value={formData.password}
+                  />
+                  <Box color="primary.main">{validateInput.password}</Box>
+                </Grid>
               </Grid>
-            </Grid>
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                sx={{
+                  mt: 3,
+                  mb: 2,
+                  backgroundColor: "#101820",
+                  color: "#F2AA4C",
+                  fontSize: "1rem",
+                  fontWeight: "bold",
+                }}
+              >
+                Register
+              </Button>
+              <Grid container justifyContent="flex-end">
+                <Grid item>
+                  <Button
+                    onClick={handleLinkLogin}
+                    variant="text"
+                    sx={{ color: "#101820" }}
+                  >
+                    Already have an account ? Log in here
+                  </Button>
+                </Grid>
+              </Grid>
+            </Box>
+            <Copyright sx={{ mt: 5 }} />
           </Box>
-          <Copyright sx={{ mt: 5 }} />
-        </Box>
+        </Grid>
       </Grid>
-    </Grid>
+    </div>
   );
 }

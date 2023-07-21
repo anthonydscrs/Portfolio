@@ -4,6 +4,8 @@ const router = express.Router();
 
 const projectControllers = require("../controllers/projectControllers");
 
+// Route for fetching all projects
+
 router.get("/projects", projectControllers.browse);
 router.get("/projects/:id", projectControllers.read);
 router.put("/projects/:id", projectControllers.edit);

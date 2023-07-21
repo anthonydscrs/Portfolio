@@ -8,7 +8,7 @@ class ProjectManager extends AbstractManager {
   find(projectId) {
     return this.database.query(
       `
-      SELECT project.id, project.name, project.description, project.website, project.picture, project.date
+      SELECT project.id, project.name, project.description, project.website, project.picture, project.github, project.date
       FROM project
       WHERE project.id = ?
     `,
@@ -18,18 +18,19 @@ class ProjectManager extends AbstractManager {
 
   findAll() {
     return this.database.query(
-      `SELECT project.id, project.name, project.description, project.website, project.picture, project.date FROM ${this.table}`
+      `SELECT project.id, project.name, project.description, project.website, project.picture, project.github, project.date FROM ${this.table}`
     );
   }
 
   insert(project) {
     return this.database.query(
-      `INSERT INTO ${this.table} (name, description, website, picture, date) VALUES (?, ?, ?, ?, ?)`,
+      `INSERT INTO ${this.table} (name, description, website, picture, github, date) VALUES (?, ?, ?, ?, ?, ?)`,
       [
         project.name,
         project.description,
         project.website,
         project.picture,
+        project.github,
         project.date,
       ]
     );
@@ -37,12 +38,13 @@ class ProjectManager extends AbstractManager {
 
   update(project) {
     return this.database.query(
-      `UPDATE ${this.table} set title = ?, description = ?, website = ?, picture = ?, date = ? where id = ?`,
+      `UPDATE ${this.table} set title = ?, description = ?, website = ?, picture = ?, github = ?, date = ? where id = ?`,
       [
         project.name,
         project.description,
         project.website,
         project.picture,
+        project.github,
         project.date,
       ]
     );

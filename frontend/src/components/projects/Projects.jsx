@@ -86,7 +86,7 @@ export default function Projects() {
             }}
           >
             {projects &&
-              projects.map((project) => (
+              [...projects].reverse().map((project) => (
                 <SwiperSlide
                   item
                   key={project.id}
@@ -152,7 +152,6 @@ export default function Projects() {
                         )}
                       </Stack>
                     </Box>
-
                     <CardContent sx={{ flexGrow: 1 }}>
                       <Typography
                         gutterBottom
@@ -180,7 +179,21 @@ export default function Projects() {
                     <CardActions sx={{ justifyContent: "space-evenly" }}>
                       <Button
                         size="small"
+                        href={project.github}
+                        target="_blank"
+                        variant="contained"
+                        sx={{
+                          color: "#101820",
+                          backgroundColor: "#F2AA4C",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        GitHub
+                      </Button>
+                      <Button
+                        size="small"
                         href={project.website}
+                        variant="contained"
                         sx={{
                           color: "#101820",
                           backgroundColor: "#F2AA4C",
@@ -188,18 +201,6 @@ export default function Projects() {
                         }}
                       >
                         Website
-                      </Button>
-                      <Button
-                        size="small"
-                        href={project.picture}
-                        target="_blank"
-                        sx={{
-                          color: "#101820",
-                          backgroundColor: "#F2AA4C",
-                          fontWeight: "bold",
-                        }}
-                      >
-                        More pictures
                       </Button>
                     </CardActions>
                   </Card>
