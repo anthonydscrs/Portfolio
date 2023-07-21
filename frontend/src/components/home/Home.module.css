@@ -1,0 +1,64 @@
+.About {
+  text-align: center;
+  margin-top: 15vh;
+}
+
+/*Presentation*/
+
+.containerPresentation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #101820;
+}
+
+.presentation {
+  margin-bottom: 2rem;
+}
+
+h2 {
+  text-transform: uppercase;
+  font-size: calc(3rem + 1.5vw);
+}
+
+h3 {
+  text-transform: uppercase;
+  font-size: calc(1rem + 1vw);
+}
+
+.containerPresentation p {
+  text-transform: uppercase;
+  font-size: calc(0.5rem + 0.5vw);
+  color: #101820;
+  margin-bottom: 2rem;
+}
+
+.img {
+  width: 15rem;
+  border-radius: 10rem;
+}
+
+@media screen and (min-width: 760px) {
+  .About {
+    margin-top: 30vh;
+  }
+  .containerPresentation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+}
+
+.button {
+  background-color: #101820;
+  border: none;
+  color: #f2aa4c;
+  padding: 15px 32px;
+  text-align: center;
+  margin-top: 2rem;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.5rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
