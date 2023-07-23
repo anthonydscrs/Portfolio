@@ -5,8 +5,8 @@ const ValidateForm = Joi.object({
     .email({ tlds: { allow: false } })
     .messages({
       "string.empty": "Email est requis",
-      "string.email": "Email doit être valid",
-      "any.required": "Email doit être valid",
+      "string.email": "Email doit être valide",
+      "any.required": "Email doit être valide",
     })
     .required(),
   password: Joi.string()

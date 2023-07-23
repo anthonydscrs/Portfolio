@@ -67,7 +67,7 @@ export default function Navbar() {
   };
 
   const handleLinkAdmin = () => {
-    navigate("/admin");
+    navigate("/espace-admin");
     setAnchorElUser(null);
     setAnchorElNavMenu(null);
   };

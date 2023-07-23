@@ -46,7 +46,7 @@ export default function AboutMe() {
   return (
     <div>
       <Navbar />
-      <Container maxWidth="xl">
+      <Container maxWidth="lg">
         <Card
           sx={{
             backgroundColor: "#101820",
@@ -88,14 +88,14 @@ export default function AboutMe() {
           </CardContent>
         </Card>
         <Container
-          maxWidth="xl"
+          maxWidth="lg"
           sx={{
             display: "grid",
             gridTemplateColumns: "1fr",
             gridGap: "1rem",
             mt: "3rem",
             "@media (min-width: 768px)": {
-              gridTemplateColumns: "1fr 1fr 1fr 1fr",
+              gridTemplateColumns: "1fr 1fr 1fr",
             },
           }}
         >
@@ -124,10 +124,10 @@ export default function AboutMe() {
                   gridTemplateColumns: "1fr",
                 }}
               >
-                {front.map((value) => {
+                {front.map((fron) => {
                   return (
                     <ListItem
-                      key={value.id}
+                      key={fron.id}
                       disablePadding
                       sx={{
                         justifyContent: " center",
@@ -145,8 +145,8 @@ export default function AboutMe() {
                       <ListItemAvatar>
                         {" "}
                         <Avatar
-                          alt={value.name}
-                          src={value.image}
+                          alt={fron.name}
+                          src={fron.image}
                           sx={{
                             mr: "1rem",
                             maxWidth: "66px",
@@ -155,7 +155,7 @@ export default function AboutMe() {
                         />
                       </ListItemAvatar>
                       <ListItemText
-                        primary={value.name}
+                        primary={fron.name}
                         primaryTypographyProps={{ fontSize: "1.5rem" }}
                         sx={{ color: "#101820" }}
                       />
@@ -190,10 +190,10 @@ export default function AboutMe() {
                   gridTemplateColumns: "1fr",
                 }}
               >
-                {back.map((value) => {
+                {back.map((bac) => {
                   return (
                     <ListItem
-                      key={value.id}
+                      key={bac.id}
                       disablePadding
                       sx={{
                         justifyContent: " center",
@@ -211,8 +211,8 @@ export default function AboutMe() {
                       <ListItemAvatar>
                         {" "}
                         <Avatar
-                          alt={value.name}
-                          src={value.image}
+                          alt={bac.name}
+                          src={bac.image}
                           sx={{
                             mr: "1rem",
                             maxWidth: "66px",
@@ -221,7 +221,7 @@ export default function AboutMe() {
                         />
                       </ListItemAvatar>
                       <ListItemText
-                        primary={value.name}
+                        primary={bac.name}
                         primaryTypographyProps={{ fontSize: "1.5rem" }}
                         sx={{ color: "#101820" }}
                       />
@@ -256,10 +256,10 @@ export default function AboutMe() {
                   gridTemplateColumns: "1fr",
                 }}
               >
-                {tools.map((value) => {
+                {tools.map((tool) => {
                   return (
                     <ListItem
-                      key={value.id}
+                      key={tool.id}
                       disablePadding
                       sx={{
                         justifyContent: " center",
@@ -277,8 +277,8 @@ export default function AboutMe() {
                       <ListItemAvatar>
                         {" "}
                         <Avatar
-                          alt={value.name}
-                          src={value.image}
+                          alt={tool.name}
+                          src={tool.image}
                           sx={{
                             mr: "1rem",
                             maxWidth: "66px",
@@ -287,73 +287,7 @@ export default function AboutMe() {
                         />
                       </ListItemAvatar>
                       <ListItemText
-                        primary={value.name}
-                        primaryTypographyProps={{ fontSize: "1.5rem" }}
-                        sx={{ color: "#101820" }}
-                      />
-                    </ListItem>
-                  );
-                })}
-              </List>
-            </CardContent>
-          </Card>
-          <Card
-            sx={{
-              backgroundColor: "#101820",
-              borderRadius: "1rem",
-              textAlign: "center",
-            }}
-          >
-            <CardContent>
-              <Typography
-                gutterBottom
-                variant="h5"
-                component="div"
-                sx={{ color: "#F2AA4C", mb: "1rem" }}
-              >
-                Tools
-              </Typography>
-              <List
-                dense
-                sx={{
-                  width: "100%",
-                  maxWidth: 360,
-                  display: "grid",
-                  gridTemplateColumns: "1fr",
-                }}
-              >
-                {tools.map((value) => {
-                  return (
-                    <ListItem
-                      key={value.id}
-                      disablePadding
-                      sx={{
-                        justifyContent: " center",
-                        textAlign: "center",
-                        alignItems: "center",
-                        background: "#F2AA4C",
-                        height: "3.5rem",
-                        mb: "1rem",
-                        transition: "all .2s ease",
-                        border: "solid rgb(0,0,0) 2px",
-                        boxShadow: "1px 1px 10px #000",
-                        borderRadius: "1rem",
-                      }}
-                    >
-                      <ListItemAvatar>
-                        {" "}
-                        <Avatar
-                          alt={value.name}
-                          src={value.image}
-                          sx={{
-                            mr: "1rem",
-                            maxWidth: "66px",
-                            ml: "0.5rem",
-                          }}
-                        />
-                      </ListItemAvatar>
-                      <ListItemText
-                        primary={value.name}
+                        primary={tool.name}
                         primaryTypographyProps={{ fontSize: "1.5rem" }}
                         sx={{ color: "#101820" }}
                       />
