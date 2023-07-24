@@ -28,20 +28,16 @@ const read = (req, res) => {
     });
 };
 
-const edit = (req, res) => {
+const edit = async (req, res) => {
   const project = req.body;
-
-  // TODO validations (length, format...)
-
   project.id = parseInt(req.params.id, 10);
-
   models.project
     .update(project)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
       } else {
-        res.sendStatus(204);
+        res.sendStatus(200);
       }
     })
     .catch((err) => {
