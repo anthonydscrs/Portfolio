@@ -43,7 +43,7 @@ class ProjectManager extends AbstractManager {
     );
   }
 
-  update(project, id) {
+  update(project) {
     return this.database.query(
       `UPDATE ${this.table} SET name = ?, description = ?, website = ?, picture = ?, github = ?, date = ?, Htmlcss = ?, Javascript = ?, React = ?, Node = ?, Express = ?, MySQL = ? WHERE id = ?`,
       [
@@ -59,7 +59,7 @@ class ProjectManager extends AbstractManager {
         project.Node,
         project.Express,
         project.MySQL,
-        id,
+        project.id,
       ]
     );
   }

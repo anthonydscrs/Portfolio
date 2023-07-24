@@ -54,6 +54,8 @@ export default function CreateProject() {
           name: "",
           description: "",
           website: "",
+          picture: "",
+          github: "",
           date: "",
           Htmlcss: "",
           Javascript: "",
@@ -77,7 +79,7 @@ export default function CreateProject() {
         pb: "3rem",
       }}
     >
-      <Typography variant="h4" color="primary" sx={{ py: 4 }}>
+      <Typography variant="h4" sx={{ py: 4, color: "black" }}>
         Création d'une nouvelle annonce
       </Typography>
       <Accordion>
@@ -146,11 +148,37 @@ export default function CreateProject() {
               </Grid>
               <Grid>
                 <TextField
+                  name="picture"
+                  required
+                  fullWidth
+                  id="picture"
+                  label="picture"
+                  autoFocus
+                  onChange={handleInputChange}
+                  value={formData.picture}
+                  sx={{ m: 1, width: 250 }}
+                />
+              </Grid>
+              <Grid>
+                <TextField
+                  name="github"
+                  required
+                  fullWidth
+                  id="github"
+                  label="github"
+                  autoFocus
+                  onChange={handleInputChange}
+                  value={formData.github}
+                  sx={{ m: 1, width: 250 }}
+                />
+              </Grid>
+              <Grid>
+                <TextField
                   name="Htmlcss"
                   required
                   fullWidth
                   id="Htmlcss"
-                  label="Htmlcss"
+                  label="Language 1"
                   autoFocus
                   onChange={handleInputChange}
                   value={formData.Htmlcss}
@@ -163,7 +191,7 @@ export default function CreateProject() {
                   required
                   fullWidth
                   id="Javascript"
-                  label="Javascript"
+                  label="Language 2"
                   autoFocus
                   onChange={handleInputChange}
                   value={formData.Javascript}
@@ -176,7 +204,7 @@ export default function CreateProject() {
                   required
                   fullWidth
                   id="React"
-                  label="React"
+                  label="Language 3"
                   autoFocus
                   onChange={handleInputChange}
                   value={formData.React}
@@ -189,7 +217,7 @@ export default function CreateProject() {
                   required
                   fullWidth
                   id="Node"
-                  label="Node"
+                  label="Language 4"
                   autoFocus
                   onChange={handleInputChange}
                   value={formData.Node}
@@ -202,7 +230,7 @@ export default function CreateProject() {
                   required
                   fullWidth
                   id="Express"
-                  label="Express"
+                  label="Language 5"
                   autoFocus
                   onChange={handleInputChange}
                   value={formData.Express}
@@ -215,7 +243,7 @@ export default function CreateProject() {
                   required
                   fullWidth
                   id="MySQL"
-                  label="MySQL"
+                  label="Language 6"
                   autoFocus
                   onChange={handleInputChange}
                   value={formData.MySQL}
@@ -235,20 +263,6 @@ export default function CreateProject() {
                   sx={{ m: 1, width: 250 }}
                 />
               </Grid>
-              <Grid>
-                <TextField
-                  name="picture"
-                  required
-                  fullWidth
-                  id="picture"
-                  label="picture"
-                  autoFocus
-                  onChange={handleInputChange}
-                  value={formData.picture}
-                  sx={{ m: 1, width: 250 }}
-                />
-              </Grid>
-
               <Button
                 type="submit"
                 fullWidth

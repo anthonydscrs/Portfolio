@@ -30,8 +30,9 @@ const read = (req, res) => {
 
 const edit = async (req, res) => {
   const project = req.body;
+  project.id = parseInt(req.params.id, 10);
   models.project
-    .update(project, req.params.id)
+    .update(project)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);

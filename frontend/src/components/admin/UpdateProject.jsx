@@ -1,84 +1,94 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
+import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from "@mui/icons-material/Close";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
 import { toast } from "react-toastify";
-import Container from "@mui/material/Container";
-import { useUserContext } from "../../Contexts/UserContext";
-import instance from "../../services/APIservice";
+import APIservice from "../../services/APIservice";
 
-function UpdateProject({ close, refreshData, setRefreshData, id }) {
-  const notifyCreation = () => toast("Le projet a bien été modifié !");
+export default function UpdateProject({ project, open, onClose }) {
+  const notifyCreation = () => toast("Votre compte a bien été modifié !");
+  const notifyCreationError = () => toast("Erreur lors de la Modification");
 
-  const { logout } = useUserContext();
+  const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
   const [formData, setFormData] = useState({
-    id: "",
-    name: "",
-    description: "",
-    website: "",
-    picture: "",
-    github: "",
-    date: "",
-    Htmlcss: "",
-    Javascript: "",
-    React: "",
-    Node: "",
-    Express: "",
-    MySQL: "",
+    name: `${project.name}`,
+    description: `${project.description}`,
+    website: `${project.website}`,
+    picture: `${project.picture}`,
+    github: `${project.github}`,
+    date: `${project.date}`,
+    Htmlcss: `${project.Htmlcss}`,
+    Javascript: `${project.Javascript}`,
+    React: `${project.React}`,
+    Node: `${project.Node}`,
+    Express: `${project.Express}`,
+    MySQL: `${project.MySQL}`,
   });
-  const handleChange = (event) => {
+
+  const handleInputChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
-  useEffect(() => {
-    instance
-      .get(`/projects/${id}`)
-      .then((response) => {
-        setFormData(response.data);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    APIservice.put(`${BACKEND_URL}/projects/${project.id}`, { ...formData })
+      .then(() => {
+        notifyCreation();
+        setFormData({
+          name: `${project.name}`,
+          description: `${project.description}`,
+          website: `${project.website}`,
+          picture: `${project.picture}`,
+          github: `${project.github}`,
+          date: `${project.date}`,
+          Htmlcss: `${project.Htmlcss}`,
+          Javascript: `${project.Javascript}`,
+          React: `${project.React}`,
+          Node: `${project.Node}`,
+          Express: `${project.Express}`,
+          MySQL: `${project.MySQL}`,
+        });
       })
       .catch((err) => {
-        if (err.response?.status === 403) {
-          logout(true);
-        }
-        if (err.response.status === 500) console.error(err);
+        console.error(err);
+        notifyCreationError();
       });
-  }, []);
-
-  const handleSubmit = () => {
-    instance
-      .put(`/projects/${id}`, formData)
-      .then((response) => {
-        if (response.status === 200) {
-          notifyCreation();
-        }
-      })
-      .catch((err) => {
-        if (err.response?.status === 403) {
-          logout(true);
-        }
-        if (err.response.status === 500) console.error(err);
-      });
-  };
-
-  const handleButtonClick = () => {
-    handleSubmit();
-    close();
-    setRefreshData(!refreshData);
   };
 
   return (
-    <Container maxWidth="md">
-      <Paper elevation={4} sx={{ p: 2 }}>
-        <Box
-          component="form"
-          noValidate
-          onSubmit={handleSubmit}
-          sx={{ ml: 2, mt: 3, mb: 2 }}
-        >
-          <Grid container spacing={2}>
+    <Modal
+      open={open}
+      onClose={onClose}
+      sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+    >
+      <Box sx={{ position: "relative" }}>
+        <Paper elevation={4} sx={{ p: 2 }}>
+          <IconButton
+            aria-label="close"
+            color="inherit"
+            size="small"
+            onClick={onClose}
+            sx={{ position: "absolute", top: 5, right: 5 }}
+          >
+            <CloseIcon />
+          </IconButton>
+          <Typography variant="h6" color="text.primary">
+            Mise à jour du projet
+          </Typography>
+          <Box
+            component="form"
+            noValidate
+            onSubmit={handleSubmit}
+            sx={{ mt: 3, mb: 2 }}
+          >
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -87,21 +97,22 @@ function UpdateProject({ close, refreshData, setRefreshData, id }) {
                   required
                   fullWidth
                   id="name"
-                  label="Nom de l'entreprise"
+                  label="Nom"
                   autoFocus
-                  onChange={handleChange}
+                  onChange={handleInputChange}
                   value={formData.name}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
+                  autoComplete="description"
+                  name="description"
                   required
                   fullWidth
                   id="description"
-                  label="Nom du description"
-                  name="description"
-                  autoComplete="description"
-                  onChange={handleChange}
+                  label="description"
+                  autoFocus
+                  onChange={handleInputChange}
                   value={formData.description}
                 />
               </Grid>
@@ -114,7 +125,7 @@ function UpdateProject({ close, refreshData, setRefreshData, id }) {
                   id="website"
                   label="website"
                   autoFocus
-                  onChange={handleChange}
+                  onChange={handleInputChange}
                   value={formData.website}
                 />
               </Grid>
@@ -125,9 +136,9 @@ function UpdateProject({ close, refreshData, setRefreshData, id }) {
                   required
                   fullWidth
                   id="picture"
-                  label="Image"
+                  label="picture"
                   autoFocus
-                  onChange={handleChange}
+                  onChange={handleInputChange}
                   value={formData.picture}
                 />
               </Grid>
@@ -138,23 +149,10 @@ function UpdateProject({ close, refreshData, setRefreshData, id }) {
                   required
                   fullWidth
                   id="github"
-                  label="Votre Ville"
+                  label="github"
                   autoFocus
-                  onChange={handleChange}
+                  onChange={handleInputChange}
                   value={formData.github}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  autoComplete="date"
-                  name="date"
-                  required
-                  fullWidth
-                  id="date"
-                  label="Votre Ville"
-                  autoFocus
-                  onChange={handleChange}
-                  value={formData.date}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -164,9 +162,9 @@ function UpdateProject({ close, refreshData, setRefreshData, id }) {
                   required
                   fullWidth
                   id="Htmlcss"
-                  label="Votre Ville"
+                  label="Htmlcss"
                   autoFocus
-                  onChange={handleChange}
+                  onChange={handleInputChange}
                   value={formData.Htmlcss}
                 />
               </Grid>
@@ -177,9 +175,9 @@ function UpdateProject({ close, refreshData, setRefreshData, id }) {
                   required
                   fullWidth
                   id="Javascript"
-                  label="Votre Ville"
+                  label="Javascript"
                   autoFocus
-                  onChange={handleChange}
+                  onChange={handleInputChange}
                   value={formData.Javascript}
                 />
               </Grid>
@@ -190,9 +188,9 @@ function UpdateProject({ close, refreshData, setRefreshData, id }) {
                   required
                   fullWidth
                   id="React"
-                  label="Votre Ville"
+                  label="React"
                   autoFocus
-                  onChange={handleChange}
+                  onChange={handleInputChange}
                   value={formData.React}
                 />
               </Grid>
@@ -203,9 +201,9 @@ function UpdateProject({ close, refreshData, setRefreshData, id }) {
                   required
                   fullWidth
                   id="Node"
-                  label="Votre Ville"
+                  label="Node"
                   autoFocus
-                  onChange={handleChange}
+                  onChange={handleInputChange}
                   value={formData.Node}
                 />
               </Grid>
@@ -216,9 +214,9 @@ function UpdateProject({ close, refreshData, setRefreshData, id }) {
                   required
                   fullWidth
                   id="Express"
-                  label="Votre Ville"
+                  label="Express"
                   autoFocus
-                  onChange={handleChange}
+                  onChange={handleInputChange}
                   value={formData.Express}
                 />
               </Grid>
@@ -229,35 +227,44 @@ function UpdateProject({ close, refreshData, setRefreshData, id }) {
                   required
                   fullWidth
                   id="MySQL"
-                  label="Votre Ville"
+                  label="MySQL"
                   autoFocus
-                  onChange={handleChange}
+                  onChange={handleInputChange}
                   value={formData.MySQL}
                 />
               </Grid>
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  autoComplete="date"
+                  name="date"
+                  required
+                  fullWidth
+                  id="date"
+                  label="date"
+                  autoFocus
+                  onChange={handleInputChange}
+                  value={formData.date}
+                />
+              </Grid>
             </Grid>
-          </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            color="success"
-            variant="contained"
-            onClick={handleButtonClick}
-            sx={{ mt: 3, mb: 2 }}
-          >
-            Enregistrer
-          </Button>
-        </Box>
-      </Paper>
-    </Container>
+            <Button
+              type="submit"
+              fullWidth
+              color="success"
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Enregistrer
+            </Button>
+          </Box>
+        </Paper>
+      </Box>
+    </Modal>
   );
 }
 
-export default UpdateProject;
-
 UpdateProject.propTypes = {
-  close: PropTypes.func.isRequired,
-  refreshData: PropTypes.bool.isRequired,
-  setRefreshData: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
+  project: PropTypes.shape.isRequired,
+  open: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
 };

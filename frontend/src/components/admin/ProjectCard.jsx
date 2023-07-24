@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import axios from "axios";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -12,7 +11,9 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import { styled } from "@mui/material/styles";
 import Stack from "@mui/material/Stack";
-import Backdrop from "@mui/material/Backdrop";
+import IconButton from "@mui/material/IconButton";
+import DeleteIcon from "@mui/icons-material/Delete";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 
 import { Navigation, Pagination, Scrollbar } from "swiper";
 // eslint-disable-next-line import/no-unresolved
@@ -26,18 +27,19 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import UpdateProject from "./UpdateProject";
 
-export default function Projects({ refreshData, setRefreshData }) {
+export default function Projects() {
   const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
   const [projects, setProjects] = useState();
-  const [openModify, setOpenModify] = useState(null);
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleOpenModify = (id) => {
-    setOpenModify(id);
+  const handleUpdateButtonClick = (project) => {
+    setIsModalOpen(true);
+    setSelectedProject(project);
   };
 
-  // Function to close the update form
-  const handleCloseModify = () => {
-    setOpenModify(null);
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
   };
 
   const allProjects = async () => {
@@ -227,31 +229,31 @@ export default function Projects({ refreshData, setRefreshData }) {
                     >
                       Website
                     </Button>
-                    <Button onClick={() => handleDelete(project.id)}>
-                      Supprimer l'offre
-                    </Button>
-                    <Button onClick={() => handleOpenModify(project.id)}>
-                      Edit
-                    </Button>
 
-                    <Backdrop
-                      open={openModify}
-                      onClose={handleCloseModify}
-                      aria-labelledby="modal-modal-title"
-                      aria-describedby="modal-modal-description"
+                    <IconButton
+                      onClick={() => handleUpdateButtonClick(project)}
+                      aria-label="Modify"
+                      size="large"
+                      sx={{ color: "#F2AA4C", paddingRight: 0 }}
                     >
-                      <Box>
-                        {/* Render the UpdateProject component in a modal */}
-                        {openModify === project.id && (
-                          <UpdateProject
-                            project={project.id} // Pass the project data as a prop to UpdateProject
-                            refreshData={refreshData}
-                            setRefreshData={setRefreshData}
-                            close={() => setOpenModify(null)}
-                          />
-                        )}
-                      </Box>
-                    </Backdrop>
+                      <AddCircleIcon fontSize="inherit" />
+                    </IconButton>
+                    <IconButton
+                      onClick={() => handleDelete(project.id)}
+                      aria-label="delete"
+                      size="large"
+                      sx={{ color: "#F2AA4C" }}
+                    >
+                      <DeleteIcon fontSize="inherit" />
+                    </IconButton>
+
+                    {isModalOpen && (
+                      <UpdateProject
+                        open={isModalOpen}
+                        onClose={handleCloseModal}
+                        project={selectedProject}
+                      />
+                    )}
                   </CardActions>
                 </Card>
               </SwiperSlide>
@@ -261,8 +263,3 @@ export default function Projects({ refreshData, setRefreshData }) {
     </Container>
   );
 }
-
-Projects.propTypes = {
-  refreshData: PropTypes.bool.isRequired,
-  setRefreshData: PropTypes.func.isRequired,
-};
