@@ -8,7 +8,7 @@ class CardManager extends AbstractManager {
   find(cardId) {
     return this.database.query(
       `
-      SELECT card.project_id, project.name, project.description, project.website, project.picture, project.date, card.Htmlcss, card.Javascript, card.React, card.Node, card.Express, card.MySQL
+      SELECT  card.Htmlcss, card.Javascript, card.React, card.Node, card.Express, card.MySQL
       FROM card
       INNER JOIN project ON card.project_id = project.id
   
@@ -20,7 +20,7 @@ class CardManager extends AbstractManager {
 
   findAll() {
     return this.database.query(
-      `SELECT card.project_id, project.name, project.description, project.website, project.picture, project.date, card.Htmlcss, card.Javascript, card.React, card.Node, card.Express, card.MySQL FROM ${this.table}
+      `SELECT  card.Htmlcss, card.Javascript, card.React, card.Node, card.Express, card.MySQL FROM ${this.table}
       INNER JOIN project ON card.project_id = project.id
       `
     );
@@ -29,9 +29,8 @@ class CardManager extends AbstractManager {
   insert(card) {
     return this.database.query(
       `INSERT INTO ${this.table} 
-    (project_id, card.Htmlcss, card.Javascript, card.React, card.Node, card.Express, card.MySQL) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+    (card.Htmlcss, card.Javascript, card.React, card.Node, card.Express, card.MySQL) VALUES ( ?, ?, ?, ?, ?, ?, ?)`,
       [
-        card.project_id,
         card.Htmlcss,
         card.Javascript,
         card.React,
@@ -44,9 +43,8 @@ class CardManager extends AbstractManager {
 
   update(card) {
     return this.database.query(
-      `update ${this.table} set  project_id = ?, card.Htmlcss = ?, card.Javascript = ?, card.React = ?, card.Node = ?, card.Express = ?, card.MySQL = ? where id = ${card.id}`,
+      `update ${this.table} set card.Htmlcss = ?, card.Javascript = ?, card.React = ?, card.Node = ?, card.Express = ?, card.MySQL = ? where id = ${card.id}`,
       [
-        card.project_id,
         card.Htmlcss,
         card.Javascript,
         card.React,

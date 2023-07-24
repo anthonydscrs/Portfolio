@@ -30,7 +30,7 @@ export default function Projects() {
   const [projects, setProjects] = useState();
 
   const allProjects = async () => {
-    const res = await axios.get(`${BACKEND_URL}/cards`);
+    const res = await axios.get(`${BACKEND_URL}/projects`);
     setProjects(res.data);
   };
   useEffect(() => {
@@ -193,6 +193,7 @@ export default function Projects() {
                       <Button
                         size="small"
                         href={project.website}
+                        target="_blank"
                         variant="contained"
                         sx={{
                           color: "#101820",

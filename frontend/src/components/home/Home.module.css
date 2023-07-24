@@ -16,14 +16,20 @@
   margin-bottom: 2rem;
 }
 
-h2 {
+.containerPresentation h2 {
   text-transform: uppercase;
   font-size: calc(3rem + 1.5vw);
+  background: -webkit-linear-gradient(#402e32, #563328);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-h3 {
+.containerPresentation h3 {
   text-transform: uppercase;
   font-size: calc(1rem + 1vw);
+  background: -webkit-linear-gradient(#402e32, #563328);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .containerPresentation p {
@@ -61,4 +67,5 @@ h3 {
   font-size: 1.5rem;
   border-radius: 1rem;
   cursor: pointer;
+  background: -webkit-linear-gradient(#402e32, #563328);
 }
